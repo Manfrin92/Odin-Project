@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+</head>
+
+<style>
+
+div {
+    
+    margin-top: 50px;
+    text-align: center;
+}
+
+td.resultado {
+    border: 2px;
+}
+
+
+</style>
+
+<body>
+
+    <h1>Calculator - Odin Project</h1>
+
+    <p> The factorial function is not working yet.</p>
+
+    <div id='espacoTotal'>      
+
+
+        <div id='botoes'>
+            
+            <table>
+
+                <tr> <td id='mostradorResultado'> Result </td> </tr>
+
+            </table>
+            
+
+            <table>
+
+                
+
+                <tr>
+                    <td> <input type="button" value="0" id='botao0' onclick="inclusaoDeNumero(window.document.getElementById('botao0').value)"> </td>
+                    <td> <input type="button" value="1" id='botao1' onclick="inclusaoDeNumero(window.document.getElementById('botao1').value)"> </td>
+                    <td> <input type="button" value="2" id='botao2' onclick="inclusaoDeNumero(window.document.getElementById('botao2').value)"> </td>
+                    <td> <input type="button" value="3" id='botao3' onclick="inclusaoDeNumero(window.document.getElementById('botao3').value)"> </td>
+
+                </tr>
+
+                <tr>
+                    <td> <input type="button" value="4" id='botao4' onclick="inclusaoDeNumero(window.document.getElementById('botao4').value)"> </td>
+                    <td> <input type="button" value="5" id='botao5' onclick="inclusaoDeNumero(window.document.getElementById('botao5').value)"> </td>
+                    <td> <input type="button" value="6" id='botao6' onclick="inclusaoDeNumero(window.document.getElementById('botao6').value)"> </td>
+                    <td> <input type="button" value="7" id='botao7' onclick="inclusaoDeNumero(window.document.getElementById('botao7').value)"> </td>
+
+                </tr>
+
+                <tr>
+                    <td> <input type="button" value="!" id='fatorial' onclick="fatorial(window.document.getElementById('fatorial').value)"> </td>
+                    <td> <input type="button" value="8" id='botao8' onclick="inclusaoDeNumero(window.document.getElementById('botao8').value)"> </td>
+                    <td> <input type="button" value="9" id='botao9' onclick="inclusaoDeNumero(window.document.getElementById('botao9').value)"> </td>
+                    <td> <input type="button" value='**' id='elevado' onclick="inclusaoOperador(window.document.getElementById('elevado').value)"> </td>
+ 
+
+                </tr>
+
+                <tr id='operadores'>
+
+                    <td> <input type="button" value="+" id='soma' onclick="inclusaoOperador(window.document.getElementById('soma').value)"> </td>
+                    <td> <input type="button" value="-" id='subtracao' onclick="inclusaoOperador(window.document.getElementById('subtracao').value)"> </td>
+
+                    <td> <input type="button" value="*" id='multiplicacao' onclick="inclusaoOperador(window.document.getElementById('multiplicacao').value)"> </td>
+                    <td> <input type="button" value="/" id='divisao' onclick="inclusaoOperador(window.document.getElementById('divisao').value)"> </td>
+
+                </tr>
+
+                <tr>
+
+                    <td colspan="4"> <input type="button" value="=" onclick="resultado()"> </td>
+
+                </tr>
+
+            </table>
+
+
+
+        </div>
+
+    </div>
+
+<script>
+
+    let parcial = window.document.getElementById('mostradorResultado');
+
+    function inclusaoDeNumero(e) {
+
+        if (parcial.innerText == 'Result') {
+            e = Number(e);
+            parcial.innerText = e;
+        } else {
+            e = Number(e);                        
+            parcial.innerText += e;
+        }        
+    }
+
+    function inclusaoOperador (e) {
+
+        if ( (parcial.innerText == 'Result' || parcial.innerText == 'Invalid') && (e == '**' || e == '!' )  ) {
+            parcial.innerText == 'Invalid';
+        } else {
+            if (parcial.innerText == 'Result' || parcial.innerText == 'Invalid') {
+                parcial.innerText = ` ${e} `;
+            } else {
+                parcial.innerText += ` ${e} `;
+            }
+            
+        }
+    }
+
+    function resultado() {  
+        parcial.innerText = eval(parcial.innerText);
+    }
+
+    function fatorial(e) {
+        parcial.innerText = `Result`;
+    }
+
+</script>
+
+    
+</body>
+</html>
